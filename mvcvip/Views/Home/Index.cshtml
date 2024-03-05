@@ -1,0 +1,281 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lành NEWS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #fff;
+            color: #000;
+            padding: 10px 0;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+            header .container {
+                max-width: 1200px;
+                margin: auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            header h1 {
+                color: #000;
+            }
+
+        nav {
+            background-color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+            nav ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+                nav ul li {
+                    display: inline;
+                    margin: 0 10px;
+                    position: relative;
+                }
+
+        .sub-menu {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            left: 0;
+            top: 100%;
+        }
+
+            .sub-menu ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+                .sub-menu ul li {
+                    margin-bottom: 10px;
+                }
+
+            .sub-menu.show {
+                display: block;
+            }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .main-content {
+            flex-grow: 2;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar {
+            flex-basis: 300px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .article {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+            .article h2 {
+                color: #000;
+                margin-bottom: 10px;
+            }
+
+            .article p {
+                line-height: 1.6;
+            }
+
+        .sidebar-item {
+            margin-bottom: 20px;
+        }
+
+            .sidebar-item:last-child {
+                margin-bottom: 0;
+            }
+
+        .section-title {
+            color: #000;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .login-btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .login-btn i {
+                margin-left: 5px;
+            }
+
+        .search-btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .search-btn i {
+                margin-right: 5px;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="left-section">
+                <h1>Lành NEWS</h1>
+                <div id="weather">TPHCM, 28°C</div>
+            </div>
+            <div class="right-section">
+                <button class="login-btn">Đăng nhập <i class="fa fa-user"></i></button>
+                <button class="search-btn"><i class="fa fa-search"></i> Tìm kiếm</button>
+            </div>
+        </div>
+        <div id="datetime"></div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#"><i class="fa fa-home"></i></a></li>
+            <li><a href="#">Tin tức</a></li>
+            <li>
+                <a href="#" onmouseover="showSubMenu()" onmouseleave="hideSubMenu()">Thời sự</a>
+                <div class="sub-menu" id="thoi-su-menu">
+                    <ul>
+                        <li><a href="#">Chính trị</a></li>
+                        <li><a href="#">Dân sinh</a></li>
+                        <li><a href="#">Giao thông</a></li>
+                        <li><a href="#">Lao động - Việt làm</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="#">Thế giới</a></li>
+            <li><a href="#">Kinh doanh</a></li>
+            <li><a href="#">Giải trí</a></li>
+            <li><a href="#">Thể thao</a></li>
+            <li><a href="#">Pháp luật</a></li>
+            <li><a href="#">Giáo dục</a></li>
+            <li><a href="#">Sức khỏe</a></li>
+            <li><a href="#">Gia đình</a></li>
+            <li><a href="#">Du lịch</a></li>
+            <li><a href="#">Khoa học</a></li>
+            <li><a href="#">Số hóa</a></li>
+            <li><a href="#">Xe</a></li>
+            <li><a href="#">Cộng đồng</a></li>
+            <li><a href="#"><i class="fa fa-list"></i></a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="main-content">
+            <div class="section-title">Tin tức</div>
+            <div class="article">
+                <h2>Tin tức</h2>
+                <p>Bộ Y tế công bố 44.189 ca mắc mới COVID-19, giảm 9.244 ca so với ngày trước. Số ca tử vong 1.686 người, giảm 70 người.</p>
+            </div>
+            <div class="article">
+                <h2>Thời sự</h2>
+                <p>Tân Phó Chủ tịch TP HCM lên tiếng về lựa chọn nguyên Phó Bí thư Thành ủy Thủ Đức về chức danh trung ương.</p>
+            </div>
+            <div class="article">
+                <h2>Thế giới</h2>
+                <p>Nước Nga bắt đầu tiêm phòng chích ngừa COVID-19 cho trẻ em từ 12 tuổi, theo thông báo của quan chức y tế.</p>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="section-title">Thời tiết</div>
+            <div class="sidebar-item">
+                <p>Bản tin thời tiết: TP HCM 28°C, Đà Nẵng 25°C, Hà Nội 20°C...</p>
+            </div>
+            <div class="section-title">Hiện trường cánh quạt trụ điện gió hơn 100 tấn bị rơi</div>
+            <div class="sidebar-item">
+                <img src="CSS/baclieu1.jpg" alt="Quảng cáo 1" style="width: 100%;">
+            </div>
+            <div class="section-title">Biệt thự 2.200 m2 kết hợp kiến trúc đồng quê Việt - Pháp</div>
+            <div class="sidebar-item">
+                <img src="CSS/bietthu.jpg" alt="Quảng cáo 2" style="width: 100%;">
+            </div>
+            <div class="section-title">Giá vàng lập đỉnh mới 81 triệu đồng</div>
+            <div class="sidebar-item">
+                <img src="CSS/giavang.jpg" alt="Quảng cáo 2" style="width: 100%;">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSubMenu(event) {
+            var subMenu = document.getElementById("thoi-su-menu");
+            subMenu.classList.add("show");
+            // Position the submenu below its parent link
+            subMenu.style.top = event.currentTarget.offsetTop + event.currentTarget.offsetHeight + "px";
+            subMenu.style.left = event.currentTarget.offsetLeft + "px";
+        }
+
+        function hideSubMenu() {
+            var subMenu = document.getElementById("thoi-su-menu");
+            subMenu.classList.remove("show");
+        }
+
+        var datetime = document.getElementById('datetime');
+
+        function updateDateTime() {
+            var now = new Date();
+            var datetimeString = now.toLocaleDateString('vi-VN') + ' ' + now.toLocaleTimeString('vi-VN');
+            datetime.textContent = datetimeString;
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    </script>
+</body>
+</html>
